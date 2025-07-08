@@ -1,37 +1,53 @@
-# Deep Learning-Based Spam Detection
+# Advanced Email Spam Detection Using TensorFlow
 
-This project presents a deep learning approach to spam message detection using a feedforward neural network (FFNN). The model is designed to classify messages as either "spam" or "ham" (non-spam) and is benchmarked against traditional machine learning algorithms such as Random Forest, SVM, and Naive Bayes.
-
-## Key Highlights
-
-- Built using a **custom FFNN** with embedding, pooling, dense, dropout, and output layers.
-- Achieved an accuracy of **~93%** on the test dataset.
-- Outperformed traditional ML models (Random Forest, SVM, Naive Bayes).
-- Included early stopping and model checkpointing for robust training.
-- Designed to be lightweight and deployable on smaller systems.
-- Ready for **Hugging Face / Chrome extension integration** for real-time usage.
+## Project Overview
+This project represents a significant advancement in email spam detection, leveraging state-of-the-art machine learning techniques. Our approach uses a TensorFlow-based feedforward neural network to classify emails into spam and non-spam (ham) categories with high accuracy. The model addresses the limitations of traditional rule-based and simple machine learning techniques, which struggle with the complexity and diversity of modern spam. The detailed architecture and training process are designed to optimize the detection accuracy while maintaining efficient computational performance.
 
 
-## Methodology
+## Dataset Description
+The training dataset comprises a meticulously curated collection from the Enron Email Dataset and SpamAssassin Public Corpus, enriched with additional sources to reflect a broad spectrum of spam tactics. The dataset is balanced to prevent biases in model training, with equal proportions of spam and ham messages that include variations in language, tone, and style, representing the real-world complexity of email communication.
 
-1. **Data Collection**:
-   - Used diverse public datasets (e.g., Enron Email Dataset, UCI SMS Spam Collection).
-   - Balanced distribution of spam and ham messages.
-   - Included multilingual, sarcastic, phishing, and promotional spam.
+## Model Architecture
+The neural network consists of several layers designed to process and classify text data effectively:
+- **Embedding Layer**: Maps words to a high-dimensional vector space, translating text into a format suitable for neural processing.
+- **Global Average Pooling Layer**: Simplifies the output of the embedding layer by averaging over the sequence dimension, reducing the number of parameters and computational cost.
+- **Dense Layers**: A series of layers that learn to detect complex patterns and relationships in the data.
+- **Dropout Layers**: Included to reduce overfitting by randomly omitting units during training.
+- **Output Layer**: A single neuron that uses a sigmoid activation function to classify an email as spam or not.
 
-2. **Preprocessing**:
-   - Tokenization using TensorFlow tokenizer.
-   - TF-IDF vectorization.
-   - Label encoding and out-of-vocabulary handling.
+## Installation
+To set up this project, follow these steps:
+```bash
+git clone https://github.com/your-repository/spam-detection-tensorflow
+cd spam-detection-tensorflow
+pip install -r requirements.txt
 
-3. **Model Architecture**:
-   - **Embedding Layer** (50 tokens, 16-dim)
-   - **Global Average Pooling**
-   - **Dense Layer (32 neurons)**
-   - **Dropout Layer (rate = 0.3)**
-   - **Output Layer (Sigmoid, binary classification)**
+```
+## Usage
 
-4. **Training Strategy**:
-   - Trained for 30 epochs with early stopping (patience = 3).
-   - Used `ModelCheckpoint` to retain best performing weights.
-   - Evaluated using precision, recall, F1-score, accuracy, and confusion matrix.
+To run the spam detection model and classify new emails:
+
+```
+stramlit run app.py
+```
+![Alt Text](image2.png)
+
+## Model Training and Evaluation
+The model was trained over 30 epochs with early stopping implemented to prevent overtraining. Evaluation metrics such as accuracy, precision, recall, and F1-score were computed on a separate test set to assess performance. Our model demonstrated excellent capability in distinguishing spam from legitimate emails, achieving a final accuracy of about 91.36%.
+
+![Alt Text](image3.png)
+
+## Future Work and Extensions
+The future roadmap includes:
+
+- Integrating the model into a Chrome extension for real-time email scanning.
+- Exploring advanced neural network architectures like LSTM and Convolutional Neural Networks for enhanced performance.
+- Creating a more diverse and extensive dataset to further improve model robustness.
+Contributing
+- We welcome contributions from the community. Please refer to CONTRIBUTING.md for more details on how to submit pull requests and suggest improvements.
+
+
+
+## Acknowledgements
+Special thanks to the Department of Computer Science and Engineering at RV University for providing the resources and environment necessary to conduct this research.
+
